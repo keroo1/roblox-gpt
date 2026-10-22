@@ -3612,8 +3612,9 @@ local function create_auto_quest(app,flags,window,dep,guide)
 		local node=o
 		while node and node~=gui do
 			local n=node.Name:lower()
-			if n:find("board",1,true) or n:find("chat",1,true) or n:find("log",1,true) or n:find("skill",1,true) then return false end
-			if n:find("tracker",1,true) or n=="activequest" or n=="currentquest" or n=="guildquest" or n=="npcdialogue" then return true end
+			if n:find("board",1,true) or n:find("chat",1,true) or (n:find("fightlog",1,true) or n:find("combatlog",1,true)) or n:find("skill",1,true) then return false end
+			if n=="npcdialogue" then return manager.confirmed==true or manager.Phase=="check" end
+			if n:find("tracker",1,true) or n=="activequest" or n=="currentquest" or n=="guildquest" then return true end
 			node=node.Parent
 		end
 		return false
