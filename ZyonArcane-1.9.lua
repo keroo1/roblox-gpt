@@ -2888,7 +2888,7 @@ return (function()
 			for _, create_button in ipairs(create_buttons) do
 				local ancestor = title.Parent
 				while ancestor and ancestor ~= player_gui do
-					if ancestor:IsA("GuiObject") and create_button:IsDescendantOf(ancestor) then
+					if ancestor:IsA("GuiObject") and ancestor.Visible and title.Visible and create_button.Visible and create_button:IsDescendantOf(ancestor) then
 						local size = ancestor.AbsoluteSize
 						local area = size.X * size.Y
 						if size.X >= 180 and size.Y >= 150 and size.X <= 600 and size.Y <= 700
